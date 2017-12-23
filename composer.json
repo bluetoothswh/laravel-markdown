@@ -1,0 +1,33 @@
+{
+    "name": "laramall/laravel-markdown",
+    "description": "一个laravel的markdown 解析器组件",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Sun",
+            "email": "bluetooth_swh@163.com",
+            "homepage":"https://larashuo.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "cebe/markdown": "~1.1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaraMall\\Markdown\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaraMall\\Markdown\\MarkdownServiceProvider"
+            ],
+            "aliases": {
+                "Menu": "LaraMall\\Markdown\\Facades\\Markdown"
+            }
+        }
+    }
+}
