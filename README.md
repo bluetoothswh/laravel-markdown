@@ -6,6 +6,8 @@
 
 <a href="https://larashuo.com">larashuo视频教程网</a>
 
+# 站长个人微信
+
 <img src="https://larashuo.com/front/laracasts/images/larashuo-kf.png">
 
 # 安装
@@ -26,16 +28,16 @@ php artisan vendor:publish
 driver可能的值
 
 github
-//github解析模式
+github解析模式
 
 all     
-//traditional markdown and parse full text
+traditional markdown and parse full text
 
 extra   
-//use markdown extra
+use markdown extra
 
 inline  
-//parse only inline elements (useful for one-line descriptions)
+parse only inline elements (useful for one-line descriptions)
 
 ````
 
