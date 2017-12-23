@@ -2,6 +2,12 @@
 
 一个解析Markdown为html的laravel组件
 
+# 官网介绍
+
+<a href="https://larashuo.com">larashuo视频教程网</a>
+
+<img src="https://larashuo.com/front/laracasts/images/larashuo-kf.png">
+
 # 安装
 ````
 composer require laramall/laravel-markdown
