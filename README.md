@@ -5,7 +5,8 @@
 #安装
 ````
 composer require laramall/laravel-markdown
-```
+
+````
 
 #配置
 
