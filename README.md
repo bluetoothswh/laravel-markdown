@@ -19,13 +19,17 @@ php artisan vendor:publish
 
 driver可能的值
 
-github  github解析模式
+github
+//github解析模式
 
-all     traditional markdown and parse full text
+all     
+//traditional markdown and parse full text
 
-extra   use markdown extra
+extra   
+//use markdown extra
 
-inline  parse only inline elements (useful for one-line descriptions)
+inline  
+//parse only inline elements (useful for one-line descriptions)
 
 ````
 
