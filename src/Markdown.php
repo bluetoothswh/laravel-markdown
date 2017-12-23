@@ -51,10 +51,10 @@ class Markdown
     */
     public function html($markdown)
     {
-        if ($this->driver == 'github') {
+        if ($this->driver == 'all') {
             $this->parser = new \cebe\markdown\Markdown();
             return  $this->parser->parse($markdown);
-        } elseif ($this->driver == 'all') {
+        } elseif ($this->driver == 'github') {
             $this->parser = new \cebe\markdown\GithubMarkdown();
             return  $this->parser->parse($markdown);
         } elseif ($this->driver == 'extra') {
@@ -64,7 +64,7 @@ class Markdown
             $this->parser = new \cebe\markdown\GithubMarkdown();
             return $this->parser->parseParagraph($markdown);
         } else {
-            $this->parser = new \cebe\markdown\Markdown();
+            $this->parser = new \cebe\markdown\GithubMarkdown();
             return  $this->parser->parse($markdown);
         }
     }
