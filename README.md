@@ -55,8 +55,6 @@ parse only inline elements (useful for one-line descriptions)
 
 # 使用
 
-<img src="https://ecsvip.com/201712/markdown-cover.png">
-
 ````
 使用github模式
 Markdown::html('# 测试标题')
