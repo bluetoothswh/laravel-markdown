@@ -5,6 +5,8 @@ namespace LaraMall\Markdown;
 class Markdown
 {
     protected $driver;
+    protected $parser;
+    protected $maps;
     /*
     |--------------------------------------------------------------------------
     |
@@ -15,11 +17,12 @@ class Markdown
     public function __construct()
     {
         $this->driver 	= config('markdown.driver');
+        $this->maps     = $this->maps();
     }
     /*
     |--------------------------------------------------------------------------
     |
-    |   赋值
+    |   链式赋值
     |
     |--------------------------------------------------------------------------
     */
@@ -32,7 +35,7 @@ class Markdown
     /*
     |--------------------------------------------------------------------------
     |
-    |   使用哪种markdown
+    |   设置驱动
     |
     |--------------------------------------------------------------------------
     */
@@ -42,6 +45,24 @@ class Markdown
         return $this;
     }
 
+
+    /*
+    |--------------------------------------------------------------------------
+    |
+    |   驱动数组
+    |
+    |--------------------------------------------------------------------------
+    */
+    public function maps()
+    {
+        return [
+                'github'=>['obj'=>'GithubMarkdown', 'func'=>'parse'],
+                'all'=>['obj'=>'Markdown', 'func'=>'parse'],
+                'extra'=>['obj'=>'MarkdownExtra', 'func'=>'parse'],
+                'inline'=>['obj'=>'GithubMarkdown', 'func'=>'parseParagraph'],
+        ];
+    }
+
     /*
     |--------------------------------------------------------------------------
     |
@@ -49,23 +70,9 @@ class Markdown
     |
     |--------------------------------------------------------------------------
     */
-    public function html($markdown)
+    public function html($markdown = '#{.red-text} 测试标题')
     {
-        if ($this->driver == 'all') {
-            $this->parser = new \cebe\markdown\Markdown();
-            return  $this->parser->parse($markdown);
-        } elseif ($this->driver == 'github') {
-            $this->parser = new \cebe\markdown\GithubMarkdown();
-            return  $this->parser->parse($markdown);
-        } elseif ($this->driver == 'extra') {
-            $this->parser = new \cebe\markdown\MarkdownExtra();
-            return $this->parser->parse($markdown);
-        } elseif ($this->driver == 'inline') {
-            $this->parser = new \cebe\markdown\GithubMarkdown();
-            return $this->parser->parseParagraph($markdown);
-        } else {
-            $this->parser = new \cebe\markdown\GithubMarkdown();
-            return  $this->parser->parse($markdown);
-        }
+        $obj           = '\cebe\markdown\\'.$this->maps[$this->driver]['obj'];
+        return call_user_func([new $obj,$this->maps[$this->driver]['func']], $markdown);
     }
 }
